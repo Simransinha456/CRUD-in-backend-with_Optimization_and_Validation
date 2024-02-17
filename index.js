@@ -38,18 +38,18 @@ app.post("/post", async (req, res) => {
 //PUT-----
 app.put("/update/:id", async (req, res) => {
     try {
-        let upid = req.params.id;
-        let upfirstName = req.body.firstName;
-        let uplastName = req.body.lastName;
-        let upage = req.body.age;
-        let upemail = req.body.email;
+        let id = req.params.id;
+        let firstName = req.body.firstName;
+        let lastName = req.body.lastName;
+        let age = req.body.age;
+        let email = req.body.email;
 
-        const newUser = await User.findOneAndUpdate({ id: upid }, { $set: { firstName: upfirstName, lastName: uplastName, age: upage, email: upemail } }, { new: true });
+        const newUser = await User.findOneAndUpdate( {id:id},{ $set: { firstName: firstName, lastName: lastName, age: age, email: email } }, { new: true });
         if (!newUser) {
-            return res.status(404).send();
+            return res.status(404).send("error while updating");
         } else {
             return res.send(newUser);
-        }
+        } 
     }
     catch (error) {
         console.log(error);
@@ -88,6 +88,7 @@ app.delete('/delete/:id', async (req, res) => {
         res.send(error.message);
     }
 })
+
 
 app.listen(8000, () => {
     console.log("Server started on port 8000");
