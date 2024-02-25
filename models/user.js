@@ -1,12 +1,10 @@
 import mongoose from "mongoose";
 
 const UserSchema = new mongoose.Schema({
-    firstName: { type: String, required: true },
-    lastName: { type: String, required: true },
-    age: { type: Number, required: true },
-    email: { type: String, required: true },
-});
+ username: { type: String, unique: true, required: true },
+ password: { type: String, required: true },
+ });
 
-const User = mongoose.model('User', UserSchema);
-export default User;
- 
+ const Auth = mongoose.model('Auth', UserSchema);
+ export default Auth; 
+ // default means ham yha kuchh bhi export kare, mongodb me ishi name se show hoga 

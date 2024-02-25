@@ -1,5 +1,5 @@
 import express from "express";
-import verifyToken from '../middleware/authMiddleware.js'; // Import verifyToken from authMiddleware.js
+import verifyToken from '../middleware/middleware.js'; // Import verifyToken from authMiddleware.js
 
 const router = express.Router();
 // Protected route

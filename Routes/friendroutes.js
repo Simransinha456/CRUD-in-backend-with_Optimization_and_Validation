@@ -1,5 +1,5 @@
-import User from "../models/user.js";
 import express from "express"
+import User from "../models/Friend.js";
 import verifyToken from "../middleware/middleware.js";
 
 const route = express.Router()
@@ -7,11 +7,11 @@ const route = express.Router()
 //POST---
 route.post("/create-friend",verifyToken, async (req, res) => {
     try {
-        const friendData = req.body;
+        const friendData = req.body; // we are getting data here from user.js
         // if (!friendData?.id) { // here this will not required bcz here you are creating new friend
         //     throw new Error("id is required");  //Manual validation
         // }
-        const newFriend = new User(friendData)
+        const newFriend = new User(friendData) 
 
         const savedFriend = await newFriend.save(); // saving newFriend data in database
         res.send(savedFriend); // here I'm getting all the values(postman me check)
@@ -118,4 +118,4 @@ route.delete('/delete-friend/:id', verifyToken, async (req, res) => {
     }
 })
 
-export default  route;
+export default route;

@@ -1,7 +1,8 @@
 import express, { urlencoded } from "express";
 import mongoose from "mongoose";
 import env from "dotenv"
-import userroute  from "./Routes/route.js";
+import friendroutes  from "./Routes/friendroutes.js"; //imp
+import loginroutes  from "./Routes/loginroutes.js"; //imp
 
 env.config()
 const app = express();
@@ -31,12 +32,9 @@ const mongoUrl = process.env.MONGO_URL;
     }
 })();
 
-// app.use("/", async(req, res, next)=>{
-//     req.name = "deepak"
-//     next();
-// }) 
+app.use("/",friendroutes); //imp
+app.use("/", loginroutes); //imp
 
-app.use("/",userroute);
 app.listen(8000, () => {
     console.log("Server started on port 8000");
 });
