@@ -17,4 +17,6 @@ try {
  }
  };
 
+ // You can use the code for protected routes here also or create another folder.. its upto you--
+
 export default verifyToken;
